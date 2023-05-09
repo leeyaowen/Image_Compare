@@ -11,9 +11,9 @@ def img_compare():
     data2 = np.array(im2)
     red2, green2, blue2 = data2.T
 
-    white_areas = ((red1-red2) == 0) & ((blue1-blue2) == 0) & ((green1-green2) == 0)
+    black_areas = ((red1-red2) == 0) & ((blue1-blue2) == 0) & ((green1-green2) == 0)
     data1[:, :, :3] = (0, 0, 0)
-    data1[:, :, :3][white_areas.T] = (255, 255, 255)
+    data1[:, :, :3][black_areas.T] = (255, 255, 255)
     # ref: https://stackoverflow.com/questions/3752476/python-pil-replace-a-single-rgba-color
 
     im3 = Image.fromarray(data1)
